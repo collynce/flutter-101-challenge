@@ -391,7 +391,7 @@ class _DataFetchWidgetState extends State<DataFetchWidget> {
                   await addProduct({
                     'name': nameController.text,
                     'quantity': quantityController.text,
-                    'category_id': selectedCategory,
+                    'product_category_id': selectedCategory,
                   }).then((value) => Navigator.of(context).pop());
                 }
               },
