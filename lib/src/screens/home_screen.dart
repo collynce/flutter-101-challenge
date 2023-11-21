@@ -57,7 +57,7 @@ class _DataFetchWidgetState extends State<DataFetchWidget> {
                   'name': item['name'].toString(),
                   'id': item['id'].toString(),
                   'quantity': item['quantity'].toString(),
-                  'category': item['category'].toString(),
+                  'category': item['product_category']['name'].toString(),
                 }
               : {'name': ''};
         }).toList();
