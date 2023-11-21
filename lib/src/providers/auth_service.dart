@@ -4,11 +4,10 @@ import 'package:http/http.dart' as http;
 import 'package:shared_preferences/shared_preferences.dart';
 import 'dart:convert';
 
-class AuthService {
-  final String baseUrl;
-  String? authToken;
+import '../globals.dart';
 
-  AuthService(this.baseUrl);
+class AuthService {
+  String? authToken;
 
   final Future<SharedPreferences> _localStorage =
       SharedPreferences.getInstance();
@@ -25,6 +24,8 @@ class AuthService {
             'device_name': await FlutterUdid.udid
           });
 
+      log('error]: ${response.statusCode}');
+
       if (response.statusCode == 200) {
         dynamic data = json.decode(response.body);
         authToken = data['token'];
@@ -34,7 +35,7 @@ class AuthService {
 
         return true;
       } else {
-        dynamic error = json.decode(json.encode(response.body));
+        dynamic error = json.decode(response.body);
         throw error['message'];
       }
     } catch (e) {
@@ -57,7 +58,7 @@ class AuthService {
         },
       );
 
-      if (response.statusCode == 201) {
+      if (response.statusCode == 200) {
         return true;
       } else {
         dynamic error = json.decode(response.body);
