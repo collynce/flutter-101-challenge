@@ -1,9 +1,9 @@
 import 'package:code_challenge/main.dart';
-import 'package:code_challenge/src/auth/register.dart';
+import 'package:code_challenge/src/screens/register_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:overlay_loading_progress/overlay_loading_progress.dart';
 import '../globals.dart';
-import 'auth_service.dart';
+import '../providers/auth_service.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({Key? key}) : super(key: key);
@@ -92,8 +92,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   });
 
                   if (_formKey.currentState?.validate() == true) {
-                    final authService = AuthService(
-                        'https://9c0f-197-237-124-4.ngrok-free.app');
+                    final authService = AuthService();
 
                     try {
                       OverlayLoadingProgress.start(context);
